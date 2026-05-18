@@ -20,7 +20,8 @@ DISPLAY = _DISPLAY()
 DEBUG_MODE = True
 
 WINDOW_TITLE = "TVC 2D Simulation"
-
 # Background grid
 GRID_TILE_SIZE = 512
 GRID_COLOR = (70, 70, 70)
+
+font: pg.Font

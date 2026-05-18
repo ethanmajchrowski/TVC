@@ -17,6 +17,7 @@ def main():
     pg.font.init()
     display_surface = pg.display.set_mode(c.DISPLAY.SIZE, flags=pg.RESIZABLE)
     pg.display.set_caption(c.WINDOW_TITLE)
+    c.font = pg.font.Font(r"assets\font\inter24.ttf")
     logger.info("Pygame initialized")
 
     engine.setup(c)
@@ -32,11 +33,15 @@ def main():
     logger.info("Starting simulation")
     
     debug_renderer = DebugRenderer()
-    debug_renderer.add_field("camera_offset", lambda: engine.camera.get_offset())
-    debug_renderer.add_field("rocket_pos", lambda: sim.rocket.pos)
+    debug_renderer.add_field("camera_offset", lambda: tuple(int(_) for _ in engine.camera.get_offset()))
+    debug_renderer.add_spacer("Linear")
+    debug_renderer.add_field("rocket_pos", lambda: tuple(int(_) for _ in sim.rocket.pos))
+    debug_renderer.add_field("rocket_vel", lambda: tuple(int(_) for _ in sim.rocket.vel))
+    debug_renderer.add_field("rocket_accel", lambda: tuple(int(_) for _ in sim.rocket.accel))
+    debug_renderer.add_spacer("Angular")
+    debug_renderer.add_field("angular_accel", lambda: int(sim.rocket.angular_accel))
+    debug_renderer.add_field("angular_vel", lambda: int(sim.rocket.angular_vel))
     debug_renderer.add_field("rocket_rot", lambda: int(sim.rocket.rot))
-    debug_renderer.add_field("rocket_vel", lambda: sim.rocket.vel)
-    debug_renderer.add_field("rocket_accel", lambda: sim.rocket.accel)
     
     lock_camera_to_rocket: bool = True
     
@@ -52,7 +57,7 @@ def main():
             # other simulation controls
             if event.type == pg.KEYDOWN:
                 if event.key == pg.K_SPACE:
-                    sim.paused = True
+                    sim.paused = not sim.paused
                 if event.key == pg.K_TAB:
                     lock_camera_to_rocket = not lock_camera_to_rocket
         
@@ -71,9 +76,13 @@ def main():
         
         if keys[pg.K_a]: rocket_turn = -90
         elif keys[pg.K_d]: rocket_turn = 90
-        else: rocket_turn = 0
-        
+        else: rocket_turn = 0        
         sim.rocket.rot += rocket_turn * dt
+
+        if lock_camera_to_rocket:
+            if keys[pg.K_RIGHT]: sim.rocket.engine_angle = 30
+            elif keys[pg.K_LEFT]: sim.rocket.engine_angle = -30
+            else: sim.rocket.engine_angle = 0
         
         sim.tick(dt)
         
