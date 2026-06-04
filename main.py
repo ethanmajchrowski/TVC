@@ -60,7 +60,8 @@ def main():
                     sim.paused = not sim.paused
                 if event.key == pg.K_TAB:
                     lock_camera_to_rocket = not lock_camera_to_rocket
-        
+                if event.key == pg.K_r:
+                    sim = Simulation()
         
         if lock_camera_to_rocket: 
             engine.camera.center_camera(*sim.rocket.pos)
