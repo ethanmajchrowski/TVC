@@ -26,7 +26,7 @@ def main():
     engine.setup(c)
     logger.info("Engine setup")
 
-    sim = Simulation()
+    sim = Simulation("config.hjson")
     logger.info("Simulation object created")
 
     clock = pg.Clock()
@@ -43,6 +43,7 @@ def main():
     debug_renderer.add_field("rocket_pos", lambda: tuple(int(_) for _ in sim.rocket.pos), units="m")
     debug_renderer.add_field("rocket_vel", lambda: tuple(int(_) for _ in sim.rocket.vel), units="m/s")
     debug_renderer.add_field("rocket_accel", lambda: tuple(int(_) for _ in sim.rocket.accel), units="m/s^2")
+    debug_renderer.add_field("max_height", lambda: round(sim.rocket.max_height, 2), units="m")
     debug_renderer.add_spacer("Angular")
     debug_renderer.add_field("angular_accel", lambda: int(sim.rocket.angular_accel), units="rad")
     debug_renderer.add_field("angular_vel", lambda: int(sim.rocket.angular_vel), units="rad/s")
@@ -76,7 +77,7 @@ def main():
                 if event.key == pg.K_TAB:
                     lock_camera_to_rocket = not lock_camera_to_rocket
                 if event.key == pg.K_r:
-                    sim = Simulation()
+                    sim = Simulation("config.hjson")
                 if event.key == pg.K_PERIOD and sim.paused:
                     sim.paused = False
                     sim.pause_on_next_tick = 20

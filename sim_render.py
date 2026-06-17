@@ -32,6 +32,8 @@ def get_rotated_rect(rect: pg.Rect, angle: float, center_pos: pg.Vector2) -> lis
 def render_sim(simulation: Simulation):
     rocket = simulation.rocket
     
+    renderer.draw_line((-c.DISPLAY.WIDTH, -rocket.max_height), (c.DISPLAY.WIDTH, -rocket.max_height), (0, 100, 0), camera_offset=True)
+    
     rocket_bottom = rocket.pos + pg.Vector2(0, rocket.length_cm // 2).rotate(rocket.rot_deg)
     # renderer.draw_circle((30, 30), 25, (255, 255, 255), camera_offset=True)
     # draw rocket body
