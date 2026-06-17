@@ -20,6 +20,9 @@ def main():
     c.font = pg.font.Font(r"assets\font\inter24.ttf")
     logger.info("Pygame initialized")
 
+    fps_history = []
+    fps_average = 0
+
     engine.setup(c)
     logger.info("Engine setup")
 
@@ -33,20 +36,32 @@ def main():
     logger.info("Starting simulation")
     
     debug_renderer = DebugRenderer()
+    debug_renderer.add_field("fps_average", lambda: round(fps_average, 1))
     debug_renderer.add_field("camera_offset", lambda: tuple(int(_) for _ in engine.camera.get_offset()))
+    debug_renderer.add_field("thrust", lambda: round(sim.rocket.thrust_force_n, 3), units="N")
     debug_renderer.add_spacer("Linear")
-    debug_renderer.add_field("rocket_pos", lambda: tuple(int(_) for _ in sim.rocket.pos))
-    debug_renderer.add_field("rocket_vel", lambda: tuple(int(_) for _ in sim.rocket.vel))
-    debug_renderer.add_field("rocket_accel", lambda: tuple(int(_) for _ in sim.rocket.accel))
+    debug_renderer.add_field("rocket_pos", lambda: tuple(int(_) for _ in sim.rocket.pos), units="m")
+    debug_renderer.add_field("rocket_vel", lambda: tuple(int(_) for _ in sim.rocket.vel), units="m/s")
+    debug_renderer.add_field("rocket_accel", lambda: tuple(int(_) for _ in sim.rocket.accel), units="m/s^2")
     debug_renderer.add_spacer("Angular")
-    debug_renderer.add_field("angular_accel", lambda: int(sim.rocket.angular_accel))
-    debug_renderer.add_field("angular_vel", lambda: int(sim.rocket.angular_vel))
-    debug_renderer.add_field("rocket_rot", lambda: int(sim.rocket.rot))
+    debug_renderer.add_field("angular_accel", lambda: int(sim.rocket.angular_accel), units="rad")
+    debug_renderer.add_field("angular_vel", lambda: int(sim.rocket.angular_vel), units="rad/s")
+    debug_renderer.add_field("rocket_rot", lambda: int(sim.rocket.rot_deg), units="rad/s^2")
+    debug_renderer.add_spacer("Smulation")
+    debug_renderer.add_field("ticks", lambda: int(sim.ticks))
+    debug_renderer.add_field("time", lambda: round(sim.time, 3), units="s")
+    debug_renderer.add_field("time_mult", lambda: round(sim.speed, 2))
+    debug_renderer.add_spacer("Rocket Specs", True)
+    debug_renderer.add_field("mass", lambda: sim.rocket.mass_kg, True, "kg")
+    debug_renderer.add_field("MOI", lambda: sim.rocket.moment_inertia, True, "kg * m^2")
     
     lock_camera_to_rocket: bool = True
     
     while running:
         dt = clock.tick() / 1000
+        fps_history.append(clock.get_fps())
+        if len(fps_history) > 50: fps_history = fps_history[len(fps_history)-50:]
+        fps_average = sum(fps_history) / len(fps_history)
         keys = pg.key.get_pressed()
         
         for event in pg.event.get():
@@ -62,7 +77,16 @@ def main():
                     lock_camera_to_rocket = not lock_camera_to_rocket
                 if event.key == pg.K_r:
                     sim = Simulation()
-        
+                if event.key == pg.K_PERIOD and sim.paused:
+                    sim.paused = False
+                    sim.pause_on_next_tick = 20
+                if event.key == pg.K_s:
+                    print(sim.speed < 0.5)
+                    if sim.speed < 0.5: 
+                        sim.speed = 1.0
+                    else: 
+                        sim.speed = 0.1
+                            
         if lock_camera_to_rocket: 
             engine.camera.center_camera(*sim.rocket.pos)
         else:
@@ -78,12 +102,12 @@ def main():
         if keys[pg.K_a]: rocket_turn = -90
         elif keys[pg.K_d]: rocket_turn = 90
         else: rocket_turn = 0        
-        sim.rocket.rot += rocket_turn * dt
+        sim.rocket.rot_deg += rocket_turn * dt
 
         if lock_camera_to_rocket:
-            if keys[pg.K_RIGHT]: sim.rocket.engine_angle = 30
-            elif keys[pg.K_LEFT]: sim.rocket.engine_angle = -30
-            else: sim.rocket.engine_angle = 0
+            if keys[pg.K_RIGHT]: sim.rocket.engine_target_angle = 30
+            elif keys[pg.K_LEFT]: sim.rocket.engine_target_angle = -30
+            else: sim.rocket.engine_target_angle = 0
         
         sim.tick(dt)
         
