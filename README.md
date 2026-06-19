@@ -32,6 +32,6 @@ MicroPython running on the ESP32 present on the rocket's flight computer.
 ---
 
 ## Gallery
-![TVC Mount Cutaway](Images\Screenshot 2026-05-22 180708.png)
-![TVC Isometric Cutaway](Images\Screenshot 2026-05-22 180623.png)
-![TVC Isometric](Images\Screenshot 2026-05-22 180416.png)
+[TVC Mount Cutaway](Images\Screenshot 2026-05-22 180708.png)
+[TVC Isometric Cutaway](Images\Screenshot 2026-05-22 180623.png)
+[TVC Isometric](Images\Screenshot 2026-05-22 180416.png)
