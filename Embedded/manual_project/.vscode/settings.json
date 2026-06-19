@@ -1,0 +1,13 @@
+{
+    "python.analysis.stubPath": "C:/Workspace/Projects/embedded/micropython/stubs",
+    "python.analysis.extraPaths": [
+        "./lib",
+        "C:/Workspace/Projects/embedded/micropython/stubs"
+    ],
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingModuleSource": "none"
+    },
+    "python.analysis.ignore": [
+        "./lib"
+    ]
+}

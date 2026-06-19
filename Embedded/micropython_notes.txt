@@ -1,0 +1,12 @@
+GPIO basics + interrupts
+https://docs.micropython.org/en/latest/esp8266/tutorial/pins.html
+I2C bus
+https://docs.micropython.org/en/latest/esp8266/quickref.html#i2c-bus
+
+
+Open REPL with PuTTY
+- open Device Manager
+- find COM port under "Ports (COM & LPT)
+- open PuTTY
+- switch from SSH to Serial under host name box
+- change COM number and set baud rate to 115200 for esp32 micropython

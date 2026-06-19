@@ -1,0 +1,5 @@
+﻿"BodyID"= 38
+"MountWidth"= 2
+"MotorMountWidth"= 2
+"MotorMountID"= 24
+"MotorMountHeight"= 75

@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run main.py on micropython board",
+            "type": "f5anything",
+            "request": "launch",
+            "command": "mpremote run main.py"
+        }
+    ]
+}
