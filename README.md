@@ -27,7 +27,7 @@ Flight simulation written in python with pygame-ce. Emulates acceleration, veloc
 MicroPython running on the ESP32 present on the rocket's flight computer. 
 * Sensor fusion: TBD
 * Actuation: Servos update based on PWM from servo library
-* Logging: telemetry is saved in the internal MicroPython OS at 100Hz
+* Logging: telemetry is saved in the internal MicroPython OS at 100Hz (rate TBD)
 
 ---
 
