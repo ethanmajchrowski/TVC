@@ -32,6 +32,9 @@ MicroPython running on the ESP32 present on the rocket's flight computer.
 ---
 
 ## Gallery
-![TVC Mount Cutaway](/Images/Screenshot 2026-05-22 180708.png)
-![TVC Isometric Cutaway](/Images/Screenshot 2026-05-22 180623.png)
-![TVC Isometric](/Images/Screenshot 2026-05-22 180416.png)
+![TVC Mount Cutaway](/Images/TVC_cutaway.png)
+Mount cutaway (with all mountin hardware)
+![TVC Isometric Cutaway](/Images/TVC_iso_cutaway.png)
+Isometric cutaway (shows motor tube and pivot hardware)
+![TVC Isometric](/Images/TVC_iso.png)
+Full TVC isometric view, with outer gimbal mount drawn as lines.
