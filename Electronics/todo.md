@@ -1,1 +1,0 @@
-- [ ] Electrical diagrams in KiCad
