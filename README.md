@@ -27,6 +27,20 @@ The project is being developed incrementally, with mechanical design, simulation
 
 ---
 
+## Project Documentation
+This project is documented using a design notebook format, recording engineering decisions, prototypes, testing, failures, and design integration in chronologically organized notebooks. 
+
+| Subsystem | Documentation |
+| --------- | ------------- |
+| Mechanical | [Mechanical Design Notebook](docs/mechanical/README.md)
+| Electronics | [Electronics Design Notebook](docs/electronics/README.md)
+| Simulation | [Simulation Design Notebook](docs/simulation/README.md)
+| Testing | [Testing & Validation](docs/testing/README.md)
+
+A note on testing: most testing is documented in the related design log, so the testing subsection will be lightly used and possibly removed later.
+
+---
+
 ## Current Status
 
 ### Completed
@@ -81,13 +95,8 @@ Specifications are subject to change as the vehicle design and simulation are re
 
 The system is divided into three primary components:
 <div align="center">
-  <img src="Images/architecture.png" width="300"><br>
+  <img src="Images/TVC Architecture graph.jpg" width="300"><br>
 </div>
-
----
-
-## Mechanical Design
-[Subsystem Page](docs/mechanical/)
 
 ---
 
@@ -114,7 +123,7 @@ Servo actuators are commanded using PWM outputs from the ESP32C6. The embedded c
 Sensor-fusion and closed-loop hardware control are currently under development, and will follow this closed-loop flow:
 
 <div align="center">
-  <img src="Images/TVC Controls Diagram.png" width="500"><br>
+  <img src="Images/TVC Controls Diagram.jpg" width="500"><br>
 </div>
 
 ### Data Logging
@@ -163,24 +172,6 @@ TVC/
 
 ---
 
-## Design Considerations
-
-Several design decisions are still being evaluated as the vehicle develops.
-
-### Rocket Body
-
-The initial concept used a 3-inch ID cardboard tube. At the target approximately 4-foot length, the tube mass was approximately 418 g, exceeding the current mass budget before accounting for the motor, electronics, or TVC hardware.
-
-A lighter fiberglass body tube produced through an epoxy layup is currently being investigated.
-
-### Motor Selection
-
-Motor selection is constrained by the target vehicle mass, desired thrust-to-weight ratio, and available TVC hardware. The current design targets an Estes D12-5, with an E12-6 being considered as an alternative.
-
-Motor selection will be finalized after the rocket body and total vehicle mass are established.
-
----
-
 ## Development History
 
 This project is being developed iteratively, with mechanical prototypes and simulation informing subsequent hardware revisions.
@@ -192,6 +183,10 @@ Major design iterations and test results will be documented here as development 
 ## Gallery
 
 ### TVC Assembly
+
+![TVC Physical Assembly](Images/gimbal_v1_top.jpg)
+![TVC Physical Assembly](Images/gimbal_v1_side.jpg)
+![TVC Physical Assembly](Images/gimbal_v1_bottom.jpg)
 
 ![TVC Isometric](Images/TVC_iso.png)
 
@@ -208,7 +203,8 @@ Major design iterations and test results will be documented here as development 
 *Isometric cutaway showing internal components and pivot hardware.*
 
 ### Hardware
-
+![Flight Computer Top](Images/flight_computer_v1.jpg)
+![Flight Computer Bottom](Images/flight_computer_v1_bottom.jpg)
 
 ---
 
