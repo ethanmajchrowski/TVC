@@ -1,0 +1,3 @@
+- [ ] Renderings of all solidworks parts for access without solidworks
+  - [ ] Any way to link to important assemblies without soldiworks
+- [ ] 

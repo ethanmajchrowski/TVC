@@ -1,0 +1,6 @@
+- Ematch lighting circuit
+	- separate perfboard, wired to above / attached below current board
+- simulation (matlab?)
+- CAD of computer sled
+	- computer sled mounting hardware
+- Finalize CAD of mounting, get and assemble gimbal mounting hardware

@@ -13,3 +13,15 @@ Nosecone: (estimate) 90g
 
 *D motor max lift weight: 283g*
 *E motor max lift weight: 397g*
+
+### Leftover data from python simulation configurations 
+! May not be correct to physical rocket !
+Rocket lenbgth: 43.18 cm.
+Mass Properties: 
+- Total mass is 0.300 kg
+- Undetermined moment of inertia
+
+*Servo assumptions*
+Max Actuation: The nozzle/mount can tilt up to 10.0 degrees.
+Servo Speed: Actuators move at a rate of 15.0 degrees per second.
+Current Angles: Both the initial and target angles start at 0.0 degrees.
