@@ -9,7 +9,7 @@ mpremote run <file> (run local script)
 
 # Filesystem
 mpremote fs ls (list files)
-mpremote fs cp <src> <dest> (copy files) (: for machine, no star for on board)
+mpremote fs cp <src> <dest> (copy files) (: in front for remote file)
     example: `mpremote fs cp lib/BMP280.py :lib/BMP280.py`
 mpremote fs rm <file> (remove file)
 mpremote fs mkdir <dir> (create directory)

@@ -10,18 +10,28 @@ from servo import Servo
 import time
 import math
 
+class Pins:
+    D0, D1, D2 = 0, 1, 2
+    D3, D4, D5 = 21, 22, 23
+    D6, D7 = 16, 17
+    D8, D9, D10 = 19, 20, 18
+
 # SETUP I2C and connected devices
-i2c = SoftI2C(sda=Pin(22), scl=Pin(23), freq=100000)
+SDA = Pin(Pins.D2)
+SCL = Pin(Pins.D5)
+
+i2c = SoftI2C(sda=SDA, scl=SCL, freq=100000)
+
 mpu = MPU6050(i2c)
 bmp = BMP280(i2c, use_case=BMP280_PRES_OS_16)
 
 print(f"devices set up! i2c scan: {i2c.scan()}")
 
-x_servo = Servo(19)
+x_servo = Servo(Pins.D7)
 x_servo_max = 100
-y_servo = Servo(17)
+y_servo = Servo(Pins.D9)
 y_servo_max = 130
-buzzer = Pin(20, Pin.OUT)
+buzzer = Pin(Pins.D0, Pin.OUT)
 
 # Globals
 last_time = time.ticks_ms()
@@ -104,6 +114,7 @@ class FlightController:
         self.last_orientation_time = None
         
         self.roll, self.yaw, self.pitch = 0.0, 0.0, 0.0
+        print("Created flight controller object")
 
     def calibrate(self, calibration_time: int = 10):
         print("Calibrating IMU & altimeter")
@@ -152,6 +163,8 @@ class FlightController:
         # --- complementary filter ---
         self.roll = alpha * self.roll + (1 - alpha) * accel_roll
         self.pitch = alpha * self.pitch + (1 - alpha) * accel_pitch
+
+        self.max_altitude = 0
 
 
     @staticmethod
@@ -206,6 +219,8 @@ class FlightController:
             # print(y_pos, x_pos)
 
     def run_timed(self, duration: int = 20):
+        start_time = time.ticks_ms()
+        print(f"Running {duration}s timed run")
         # self.beep()
         time.sleep(0.5)
         self.beep(0.1)
@@ -244,7 +259,19 @@ class FlightController:
             self.update_servo(clamp(y_target, 0, y_servo_max), y_servo)
             # print(x_target)
             # print(self.pitch, self.roll)
-    
+            alt = self.get_altitude()
+            self.max_altitude = max(alt, self.max_altitude)
+        
+        print("Timed run complete, beeping.")
+        self.beep()
+        
+        print("Writing data to flight log.")
+        with open("log.txt", "w") as f:
+            f.write(f"max alt: {self.max_altitude}\n")
+            f.write(f"Start time: {start_time}ms\n")
+            f.write(f"End time: {str(time.ticks_ms())}ms\n")
+            f.write(f"Elapsed time: {str(time.ticks_diff(time.ticks_ms(), start_time))}")
+        print("Done writing data!")
     
     def run(self):
         self.beep()
@@ -304,10 +331,11 @@ class FlightController:
         
         print("done")
 
-con = FlightController()
-con.beep()
-con.calibrate(5)
-# con.run()
-# con.circle_servo_test(10)
-con.run_timed(40)
-con.beep()
+if __name__ == "__main__":
+    con = FlightController()
+    con.beep()
+    con.calibrate(5)
+    # con.run()
+    # con.circle_servo_test(10)
+    con.run_timed(10)
+    con.beep()
