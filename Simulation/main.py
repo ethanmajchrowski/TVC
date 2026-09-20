@@ -55,6 +55,7 @@ def main():
     debug_renderer.add_spacer("Rocket Specs", True)
     debug_renderer.add_field("mass", lambda: sim.rocket.mass_kg, True, "kg")
     debug_renderer.add_field("MOI", lambda: sim.rocket.moment_inertia, True, "kg * m^2")
+    debug_renderer.add_field("TWR", lambda: sim.rocket.TWR, True, "")
     
     lock_camera_to_rocket: bool = True
     
