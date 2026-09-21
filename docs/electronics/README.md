@@ -17,3 +17,9 @@ The flight computer needs to:
 Test sensors and construct a breadboard-based prototype of flight computer to verify all components and wiring architecture.
 
 ### Design
+
+
+
+
+---
+possibly replace BNO055 with [BNO085](https://a.co/d/02rHzYAD)
