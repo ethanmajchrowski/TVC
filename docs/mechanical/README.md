@@ -143,6 +143,7 @@ After the first assembly of the gimbal mount, observations were collected and th
 <div align="center">
     <img src="play_example.jpg"> <br> <br>
 </div>
+
 - Clearance holes for airframe mounting bolts are too small, and hexagonal inserts for nylon locking nuts are too small.
 
 <br></br>
@@ -181,7 +182,7 @@ This prompted an investigation into lighter airframe materials.
 
 ### Fiberglass Investigation
 
-One option considered was purchasing a pre-made fiberglass airframe. These were ultimately ruled out primarily due to cost and shipping. For example, a 30 in. section of 3 in. fiberglass tubing was priced at over $60. [[Wildman Rocketry](https://wildmanrocketry.com/collections/fiberglass-1/products/g12-3-0)]
+One option considered was purchasing a pre-made fiberglass airframe. These were ultimately ruled out primarily due to cost and shipping. For example, a 30 in. section of 3 in. fiberglass tubing was priced at over $60. *[Wildman Rocketry](https://wildmanrocketry.com/collections/fiberglass-1/products/g12-3-0)*
 
 As an alternative, I investigated manufacturing my own fiberglass body tube. This involved sourcing and preparing a mandrel, wrapping fiberglass around the mandrel, saturating the material with epoxy, and removing the cured tube from the mandrel.
 
