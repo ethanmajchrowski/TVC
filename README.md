@@ -211,3 +211,40 @@ Major design iterations and test results will be documented here as development 
 ## Project Status
 
 This is an active development project. Mechanical design, electronics integration, simulation, and control development are ongoing, and the vehicle has not yet completed controlled flight testing.
+
+
+**Project To-Do**
+*CAD/physical design:*
+- [ ] Flight computer sled
+  - [ ] Determine accessible mounting strategy for flight computer mounting hardware
+- [ ] Finalize nose cone design
+- [ ] Finalize body tube dimensions and mass properties
+- [ ] Bulkhead
+  - [ ] Determine suitable material for avionics bulkhead
+  - [ ] Determine accessible mounting strategy for bulkhead
+  - [ ] Determine motor ejection charge venting strategy
+
+
+*Electronics:*
+- [ ] MOSFET testing for ejection charge
+- [ ] Ejection charge perfboard
+- [ ] Documentation
+  - [ ] Write about overlooking need for ejection charge
+
+
+*Simulation:*
+- [ ] OpenRocket finalize model
+  - [ ] Figure out how to simulate rocket with artificial stability to bypass fin requirements
+  - [ ] Run OpenRocket simulations to determine maximum altitude
+- [ ] MATLAB physical simulation + control tuning
+
+
+*Testing:*
+- [ ] Thrust simulation 
+  - [ ] CAD gimbal mount
+  - [ ] CAD motor mount adapter for drone motor
+  - [ ] Determine if rotary encoders for gimbal mount would be useful
+- [ ] Ejection charge Nichrome testing
+  - [ ] Ensure rapid heating
+  - [ ] Check battery and electronics health
+- [ ] Gimbal true angle min/maxes.
