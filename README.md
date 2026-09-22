@@ -8,6 +8,19 @@ A model rocket featuring a two-axis thrust-vector-control (TVC) system, custom f
   <i>Two-axis gimbal actuation test. Both axes are commanded with a sinusoidal function.</i>
 </div>
 
+## Project Documentation
+This project is documented using a design notebook format, recording engineering decisions, prototypes, testing, failures, and design integration in chronologically organized notebooks. 
+
+| Subsystem | Documentation |
+| --------- | ------------- |
+| Mechanical | [Mechanical Design Notebook](docs/mechanical/README.md)
+| Electronics | [Electronics Design Notebook](docs/electronics/README.md)
+| Simulation | [Simulation Design Notebook](docs/simulation/README.md)
+| Testing | [Testing & Validation](docs/testing/README.md)
+
+A note on testing: most testing is documented in the related design log, so the testing subsection will be lightly used and possibly removed later.
+
+
 ---
 
 ## Project Overview
@@ -27,19 +40,6 @@ The project is being developed incrementally, with mechanical design, simulation
 
 ---
 
-## Project Documentation
-This project is documented using a design notebook format, recording engineering decisions, prototypes, testing, failures, and design integration in chronologically organized notebooks. 
-
-| Subsystem | Documentation |
-| --------- | ------------- |
-| Mechanical | [Mechanical Design Notebook](docs/mechanical/README.md)
-| Electronics | [Electronics Design Notebook](docs/electronics/README.md)
-| Simulation | [Simulation Design Notebook](docs/simulation/README.md)
-| Testing | [Testing & Validation](docs/testing/README.md)
-
-A note on testing: most testing is documented in the related design log, so the testing subsection will be lightly used and possibly removed later.
-
----
 
 ## Current Status
 
