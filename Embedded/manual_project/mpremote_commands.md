@@ -6,6 +6,7 @@ mpremote repl (enter REPL)
 mpremote eval <expr> (evaluate/print expr)
 mpremote exec <code> (execute python code)
 mpremote run <file> (run local script)
+    mpremote run <file> --no-follow (returns immediately and leaves the device running the script in the background)
 
 # Filesystem
 mpremote fs ls (list files)
